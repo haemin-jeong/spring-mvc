@@ -15,6 +15,24 @@
     <p>오류 화면 입니다.</p>
   </div>
 
+<!--
+  BasicErrorController는 아래 정보들을 model에 담아서 뷰로 전달해준다.
+  실무에서는 아래와 같은 정보들을 사용자들에게 노출하면 안된다. 오류는 서버에 로그로 남겨서 확인해야 한다.
+  -->
+  <ul>
+    <li>오류 정보</li>
+    <ul>
+      <li th:text="|timestamp: ${timestamp}|"></li>
+      <li th:text="|path: ${path}|"></li>
+      <li th:text="|status: ${status}|"></li>
+      <li th:text="|message: ${message}|"></li>
+      <li th:text="|error: ${error}|"></li>
+      <li th:text="|excption: ${exception}|"></li>
+      <li th:text="|errors: ${errors}|"></li>
+      <li th:text="|trace: ${trace}|"></li>
+    </ul>
+  </ul>
+
   <hr class="my-4">
 
 </div>
