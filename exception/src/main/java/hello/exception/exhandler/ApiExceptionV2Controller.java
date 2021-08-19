@@ -23,35 +23,6 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class ApiExceptionV2Controller {
 
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ErrorResult illegalExHandle(IllegalArgumentException e) {
-        log.error("[exceptionHandle] ex", e);
-        return new ErrorResult("BAD", e.getMessage());
-    }
-
-    //ResponseEntity를 반환하면 HTTP 응답 코드를 동적으로 변경 가능
-    @ExceptionHandler //예외를 지정하지 않으면 메서드 파라미터의 예외를 사용
-    public ResponseEntity<ErrorResult> userExHandle(UserException e) {
-        log.error("[exceptionHandler] ex", e);
-        ErrorResult errorResult = new ErrorResult("USER-EX", e.getMessage());
-        return new ResponseEntity<>(errorResult, HttpStatus.BAD_REQUEST);
-    }
-
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    @ExceptionHandler
-    public ErrorResult exHandle(Exception e) {
-        log.error("[exceptionHandle] ex", e);
-        return new ErrorResult("EX", "내부 오류");
-    }
-
-    //ModelAndView를 반환하여 오류 HTML을 응답하는데 사용할 수도 있다.
-    @ExceptionHandler(ViewException.class)
-    public ModelAndView ex(ViewException e) {
-        log.info("exception e", e);
-        return new ModelAndView("error");
-    }
-
     @GetMapping("/api2/members/{id}")
     public MemberDto getMember(@PathVariable("id") String id) {
 
