@@ -18,6 +18,10 @@ Formatter 인터페이스의 구현 클래스를 찾아보면 날짜나 시간 �
 - @DateTimeFormat : 날짜 관련 형식 지정 포멧터, Jsr310DateTimeFormatAnnotationFormatterFactory
 
 AnnotationFormatterFactory : 필드의 타입이나 애노테이션 정보를 활용할 수 있는 포멧터
+
+참고
+- HttpMessageConverter : HTTP 메시지 바디 <-> 객체, 컨버전 서비스와 상관X
+- ConversionService : @RequestParam, @ModelAttribute, @PathVariable, 뷰템플릿에서 사용
  */
 @Controller
 public class FormatterController {
